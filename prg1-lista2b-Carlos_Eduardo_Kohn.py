@@ -12,17 +12,18 @@ def duzias(ovos):
     cima se necessário.
     '''
 
-    if ovos <= 0:
-        pass
+    if ovos % 12 == 0:
+        quant_duzias = ovos / 12
     else:
-        return ovos // 12
+        quant_duzias = int(ovos / 12) + 1
+    return quant_duzias
 
 
 def baskara(a, b, c):
     '''Calcule as raízes de uma equação do segundo grau, na forma
     ax2 + bx + c. A função recebe a, b e c e faz as consistências,
     informando ao usuário nas seguintes situações:
-    - Se o usuário informar o valor de A igual a zero é uma equaçao do
+    - Se o usuário informar o valor de A igual a zero não é uma equação do
     2o grau.
     - Se o delta calculado for negativo, a equação não possui raizes reais.
     Devolva uma tupla vazia.
@@ -32,6 +33,21 @@ def baskara(a, b, c):
     Devolva uma tupla com dois elementos.
     '''
 
+    delta = (b ** 2) + (-4 * a * c)
+
+    if a == 0:
+        y = -c/b
+        return (y, )
+    if delta < 0:
+        return ()
+    if delta == 0:
+        x = ((-b) + (math.sqrt(delta))) / (2 * a)
+        return (x, )
+    else:
+        x_1 = ((-b) + (math.sqrt(delta))) / (2 * a)
+        x_2 = ((-b) - (math.sqrt(delta))) / (2 * a)
+        return (x_1, x_2)
+
 
 def decompor_numero(numero):
     '''
@@ -39,6 +55,14 @@ def decompor_numero(numero):
     centenas, dezenas e unidades do mesmo.
     Obs.: não utilize operações com strings
     '''
+
+    centenas = int(numero // 100)
+    dezenas = int((numero - (centenas * 100)) // 10)
+    unidades = numero - (centenas * 100 + dezenas * 10)
+    if numero >= 1000:
+        return ()
+    else:
+        return centenas, dezenas, unidades
 
 
 def caixa_eletronico(valor):
