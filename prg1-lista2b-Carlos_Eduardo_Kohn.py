@@ -1,29 +1,29 @@
 #!/bin/env python3
 # coding: utf-8
-
-
 # Marco André <marcoandre@ifc-araquari.edu.br>
 # Lista de exercícios 2.2
 
+import math
+
 
 def duzias(ovos):
-    """ Receba o número de ovos e devolva a quantidade de dúzias
+    ''' Receba o número de ovos e devolva a quantidade de dúzias
     correspondente. Considere sempre dúzias cheias, arredondando pra
     cima se necessário.
-    """
+    '''
 
     if ovos % 12 == 0:
-        quant_duzias = ovos/12
+        quant_duzias = ovos / 12
     else:
         quant_duzias = int(ovos / 12) + 1
     return quant_duzias
 
 
 def baskara(a, b, c):
-    """Calcule as raízes de uma equação do segundo grau, na forma
+    '''Calcule as raízes de uma equação do segundo grau, na forma
     ax2 + bx + c. A função recebe a, b e c e faz as consistências,
     informando ao usuário nas seguintes situações:
-    - Se o usuário informar o valor de A igual a zero é uma equaçao do
+    - Se o usuário informar o valor de A igual a zero não é uma equação do
     2o grau.
     - Se o delta calculado for negativo, a equação não possui raizes reais.
     Devolva uma tupla vazia.
@@ -31,39 +31,46 @@ def baskara(a, b, c):
     raiz real. Devolva uma tupla com um único valor.
     - Se o delta for positivo, a equação possui duas raiz reais.
     Devolva uma tupla com dois elementos.
-    """
+    '''
 
+    x_1 = (-b + (math.sqrt(delta)) / 2 * a
+           x_2 = (-b - (math.sqrt(delta)) / 2 * a
 
+    if a = 0:
+    x = -c / b
+    return (x)
+
+else:
+if delta < 0:
+    delta = b ** 2 + (-4 * a * c)
+    return ()
 
 
 def decompor_numero(numero):
-    """
+    '''
     Leia um número inteiro menor que 1000 e devolva a quantidade de
     centenas, dezenas e unidades do mesmo.
     Obs.: não utilize operações com strings
-    """
+    '''
+
+    centenas = int(numero // 100)
+    dezenas = int((numero - (centenas * 100)) // 10)
+    unidades = numero - (centenas * 100 + dezenas * 10)
     if numero >= 1000:
         return ()
-    
-    centenas = numero // 100
-    numero = numero % 100
-    dezenas = numero // 10
-    unidades = numero % 10
-
-    return centenas, dezenas, unidades
+    else:
+        return centenas, dezenas, unidades
 
 
 def caixa_eletronico(valor):
-    """Receba a valor do saque e retorne uma lista de pares de valores,
+    '''Receba a valor do saque e retorne uma lista de pares de valores,
     correspondentes ao valor das notas e quantidades de notas.
     As notas disponíveis serão as de 1, 5, 10, 25, 50 e 100 reais.
     O valor é máximo de 600 reais, sem valor minimo.
     Não se preocupe com a quantidade de notas existentes na máquina.
     Procure dar sempre o número mínimo de notas, partindo das maiores
     para as menores.
-    """
-
-    
+    '''
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
@@ -75,9 +82,9 @@ def test(obtido, esperado):
     global acertos, total
     total += 1
     if obtido != esperado:
-        prefixo = '\033[31m%s' % 'Falhou'
+        prefixo = '\033[31m%s' % ('Falhou')
     else:
-        prefixo = '\033[32m%s' % 'Passou'
+        prefixo = '\033[32m%s' % ('Passou')
         acertos += 1
     print('%s Esperado: %s \tObtido: %s\033[1;m' % (prefixo, repr(esperado),
                                                     repr(obtido)))
