@@ -20,12 +20,29 @@ def troca_caixa(texto):
     Consoantes ficam em caixa baixa (minúsculas)'''
 
 
+    texto = texto.lower()
+    nova_palavra = ''
+    for caracter in texto:
+        if caracter in "aeiou":
+            nova_palavra += caracter.upper()
+        else:
+            nova_palavra += caracter.lower()
+
+    return nova_palavra
 
 
 def imprime_mes_por_extenso(data):
     '''Faça um programa que solicite a data de nascimento (dd/mm/aaaa)
     e imprima com o nome do mês por extenso
     '''
+
+    mes = int(data[3:5])
+    meses = ['janeiro','fevereiro','março','abril','maio','junho', 'julho',\
+            'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
+
+
+    return meses[mes-1]
+
 
 
 def encontra_caracter(texto, caracter_procurado):
