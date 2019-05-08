@@ -6,7 +6,7 @@ def palindrome(texto):
     '''Faça uma função que verifique se uma textro passado é palíndrome,
     isto é, se é igual quando lido de trás pra frente.'''
 
-    texto = texto.strip().lower()       #.strip - retira espaços e .lower coloca o texto em minuscula
+    texto = texto.strip().lower()       #.strip - retira espaços e .lower coloca o texto em minúsculo
     novo_texto = ''
     for caracter in texto:
         if caracter.isalnum():          #.isalnum - verifica se o caracter é alfanumérico
@@ -36,13 +36,23 @@ def imprime_mes_por_extenso(data):
     e imprima com o nome do mês por extenso
     '''
 
-    mes = int(data[3:5])
-    meses = ['janeiro','fevereiro','março','abril','maio','junho', 'julho',\
-            'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
+    # dia = data[:2]
+    # mes = int(data[3:5])
+    # ano = data[6:]
 
+    dia, mes, ano = data.split('/')
 
-    return meses[mes-1]
+    meses = 'janeiro fevereiro março abril maio junho julho \
+            agosto setembro outubro novembro dezembro'.split()
 
+    # meses = ['janeiro','fevereiro','março','abril','maio','junho', 'julho',\
+    #         'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
+
+    return '{} de {} de {}'.format(dia, meses[int(mes)-1], ano)
+
+    # return '%s de %s de %s'%(dia, meses[int(mes)-1], ano)
+
+    # return dia + ' de ' + meses[mes-1]+ ' de ' + ano
 
 
 def encontra_caracter(texto, caracter_procurado):
@@ -50,8 +60,17 @@ def encontra_caracter(texto, caracter_procurado):
     aparece o caracter especificado. Não use métodos nativos, com texto.find(), index, etc.'''
 
 
+
+
 def é_sortudo(numero):
     '''um número é sortudo se ele contém o dígito 2 mas não o dígito 7.'''
+
+    numero = str(numero)
+
+    if '2' in numero and '7' not in numero:
+        return True
+    else:
+        return False
 
 
 def numeros_sortudos(limite_inferior=1, limite_superior=100000):
@@ -65,9 +84,22 @@ def numeros_sortudos(limite_inferior=1, limite_superior=100000):
     '''
 
 
+
+
 def é_azarado(numero):
     '''O último dígito não pode ser igual ao primeiro, porque isso dá azar
     '''
+
+
+    prim_num = int(numero[0])
+    ult_num = int(numero[-1])
+    
+    return prim_num == ult_num
+
+    # if prim_num != ult_num:
+    #     return False
+    # else:
+    #     return True
 
 
 def soma_é_par(numero):
