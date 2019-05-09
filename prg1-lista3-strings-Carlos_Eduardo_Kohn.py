@@ -91,12 +91,12 @@ def é_azarado(numero):
     '''
 
 
-    prim_num = int(numero[0])
-    ult_num = int(numero[-1])
+    primeiro_numero = int(numero[0])
+    ultimo_numero = int(numero[-1])
     
-    return prim_num == ult_num
+    return primeiro_numero == ultimo_numero
 
-    # if prim_num != ult_num:
+    # if primeiro_numero != ultimo_numero:
     #     return False
     # else:
     #     return True
@@ -106,9 +106,17 @@ def soma_é_par(numero):
     '''A soma dos dígitos tem que ser par, porque isso é legal;
     '''
 
+    soma = int(numero[0]) + int(numero[1]) + int(numero[2]) + int(numero[3]) + int(numero[4]) + int(numero[5])
+
+    return soma % 2 == 0
+
 
 def é_chato(numero):
     '''Não pode haver dois dígitos consecutivos idênticos, porque isso é chato.'''
+
+    for numeros_iguais in numero:
+
+
 
 
 def é_número_válido(numero):
