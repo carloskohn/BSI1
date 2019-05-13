@@ -59,6 +59,22 @@ def encontra_caracter(texto, caracter_procurado):
     aparece o caracter especificado. Não use métodos nativos, com texto.find(), index, etc.'''
 
 
+    for localizacao, caracter in enumerate(texto):
+        if caracter_procurado == caracter:
+            return localizacao
+    else:
+        return -1
+
+
+
+
+    # for localizacao in texto:
+    #     if caracter_procurado in texto:
+    #         localizacao = caracter_procurado in enumerate(texto)
+    #
+    # return localizacao
+
+
 def é_sortudo(numero):
     '''um número é sortudo se ele contém o dígito 2 mas não o dígito 7.'''
 
@@ -81,6 +97,14 @@ def numeros_sortudos(limite_inferior=1, limite_superior=100000):
     '''
 
 
+    num_sort = 0
+    for intervalo in range(limite_inferior, limite_superior+1):
+        if é_sortudo(intervalo):
+            num_sort += 1
+
+    return num_sort
+
+
 def é_azarado(numero):
     '''O último dígito não pode ser igual ao primeiro, porque isso dá azar
     '''
@@ -100,28 +124,46 @@ def soma_é_par(numero):
     '''A soma dos dígitos tem que ser par, porque isso é legal;
     '''
 
-    soma = int(numero[0]) + int(numero[1]) + int(numero[2]) + int(numero[3]) + int(numero[4]) + int(numero[5])
-
+    soma = 0
+    for unidade in numero:
+        soma += int(unidade)
     return soma % 2 == 0
+
+
+    # soma = int(numero[0]) + int(numero[1]) + int(numero[2]) + int(numero[3]) + int(numero[4]) + int(numero[5])
+    #
+    # return soma % 2 == 0
 
 
 def é_chato(numero):
     '''Não pode haver dois dígitos consecutivos idênticos, porque isso é chato.'''
 
-    condicao = False
+    anterior = ''
+    for atual in numero:
+        if atual == anterior:
+            return True
+        anterior = atual
 
-    for posicao in range(len(numero)-1):
-        if numero[posicao] != numero[posicao+1]:
-            pass
+    return False
 
-        else:
-            condicao = True
-
-    return condicao
+    # condicao = False
+    #
+    # for posicao in range(len(numero)-1):
+    #     if numero[posicao] != numero[posicao+1]:
+    #         pass
+    #     else:
+    #         condicao = True
+    #
+    # return condicao
 
 
 def é_número_válido(numero):
     '''Um número é válido se não é azarado, a soma é par e não é chato.'''
+
+    if not é_azarado(numero) and soma_é_par(numero) and not é_chato(numero):
+        return True
+    else:
+        return False
 
 
 def ponteironuloville(telefones):
