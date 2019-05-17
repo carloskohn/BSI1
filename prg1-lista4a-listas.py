@@ -11,9 +11,9 @@ def ondernamento_contrario(lista):
 
     return l_invertida
 
-    # l_invertida = lista[::-1]
-    #
-    # return l_invertida
+
+# lista = lista[::-1]
+    # return lista
 
 
 def intercalamento_listas(lista1,lista2):
@@ -21,10 +21,31 @@ def intercalamento_listas(lista1,lista2):
     crie uma nova lista composta pelo
     intercalamento entre as duas.'''
 
+    lista_intercalada = []
+
+    while posicao < len(lista1):
+        lista_intercalada.append((posicao[lista1], posicao[lista2]))
+
+
+    return lista_intercalada
+
+
 
 
 def im_pares(lista):
     ''' Separe em listas os impares e pares, dos inteiros da 'lista' '''
+
+    pares = []
+    impares = []
+
+    for numeros in lista:
+        if int(numeros) % 2 == 0:
+            pares.append(numeros)
+        else:
+            impares.append(numeros)
+
+    return (pares, impares)
+
 
 def maior_menor(lista):
     ''' Calcule o maior e o menor numero da 'lista' '''
