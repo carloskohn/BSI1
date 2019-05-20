@@ -74,30 +74,87 @@ def caixa_eletronico(valor):
    para as menores.
    '''
 
-   lista = []
-   notas_100 = valor // 100
-   notas_50 = (valor%100)//50
-   notas_25 = ((valor%100)%50)//25
-   notas_10 = (((valor%100)%50)%25)//10
-   notas_5 = ((((valor%100)%50)%25)%10)//5
-   notas_1 = (((((valor%100)%50)%25)%10)%5)//1
-
-   if valor > 600 or valor < 1:
+   if valor > 600:
       return []
-   if notas_100 != 0:
-      lista.append((100, notas_100))
-   if notas_50 != 0:
-      lista.append((50, notas_50))
-   if notas_25 != 0:
-      lista.append((25, notas_25))
-   if notas_10 != 0:
-      lista.append((10, notas_10))
-   if notas_5 != 0:
-      lista.append((5, notas_5))
-   if notas_1 != 0:
-      lista.append((1, notas_1))
 
-   return lista
+   saida = []
+   notas = [100, 50, 25, 10, 5, 1]
+
+   for nota in notas:
+      qtde_notas = valor // nota
+      if qtde_notas > 0:
+         saida.append((nota, qtde_notas))
+      valor = valor % nota
+
+   return (saida)
+
+
+   # nota = notas[0]
+   # notas_de_100 = valor // 100
+   # if notas_de_100 > 0:
+   #    saida.append((nota, notas_de_100))
+   # valor = valor % nota
+   #
+   # nota = notas[1]
+   # notas_de_50 = valor // 50
+   # if notas_de_50 > 0:
+   #    saida.append((nota, notas_de_50))
+   # valor = valor % nota
+   #
+   # nota = notas[2]
+   # notas_de_25 = valor // 25
+   # if notas_de_25 > 0:
+   #    saida.append((nota, notas_de_25))
+   # valor = valor % nota
+   #
+   # nota = notas[3]
+   # notas_de_10 = valor // 10
+   # if notas_de_10 > 0:
+   #    saida.append((nota, notas_de_10))
+   # valor = valor % nota
+   #
+   # nota = notas[4]
+   # notas_de_5 = valor // 5
+   # if notas_de_5 > 0:
+   #    saida.append((nota, notas_de_5))
+   # valor = valor % nota
+   #
+   # nota = notas[5]
+   # notas_de_1 = valor // 1
+   # if notas_de_1 > 0:
+   #    saida.append((nota, notas_de_1))
+   # valor = valor % nota
+   #
+   # return saida
+
+
+
+
+
+   # lista = []
+   # notas_100 = valor // 100
+   # notas_50 = (valor%100)//50
+   # notas_25 = ((valor%100)%50)//25
+   # notas_10 = (((valor%100)%50)%25)//10
+   # notas_5 = ((((valor%100)%50)%25)%10)//5
+   # notas_1 = (((((valor%100)%50)%25)%10)%5)//1
+   #
+   # if valor > 600 or valor < 1:
+   #    return []
+   # if notas_100 != 0:
+   #    lista.append((100, notas_100))
+   # if notas_50 != 0:
+   #    lista.append((50, notas_50))
+   # if notas_25 != 0:
+   #    lista.append((25, notas_25))
+   # if notas_10 != 0:
+   #    lista.append((10, notas_10))
+   # if notas_5 != 0:
+   #    lista.append((5, notas_5))
+   # if notas_1 != 0:
+   #    lista.append((1, notas_1))
+   #
+   # return lista
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!

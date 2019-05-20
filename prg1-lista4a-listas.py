@@ -59,9 +59,7 @@ def maior_menor(lista):
 
     return (maior, menor)
 
-    # return (max(lista),min(lista))
-
-
+    # return (max(lista), min(lista))
 
 
 def dar_troco(valor_a_pagar, valor_em_dinheiro):
@@ -69,31 +67,47 @@ def dar_troco(valor_a_pagar, valor_em_dinheiro):
     quantidade de notas sem considerar centavos
     ex: 1 e 10 retorna troco_notas_quantidade = [5,2] quantidade_notas = [1,2] '''
 
-    valor = valor_em_dinheiro-valor_a_pagar
-    troco = []
-    notas_50 = valor // 50
-    notas_20 = (valor % 50) // 20
-    notas_10 = ((valor % 50) % 20) // 10
-    notas_5 = (((valor % 50) % 20) % 10) // 5
-    notas_2 = ((((valor % 50) % 20) % 10) % 5) // 2
-    notas_1 = (((((valor % 50) % 20) % 10) % 5) % 2) // 1
+    troco = valor_em_dinheiro - valor_a_pagar
 
     if valor_em_dinheiro < valor_a_pagar:
         return []
-    if notas_50 != 0:
-        troco.append((50, notas_50))
-    if notas_20 != 0:
-        troco.append((20, notas_20))
-    if notas_10 != 0:
-        troco.append((10, notas_10))
-    if notas_5 != 0:
-        troco.append((5, notas_5))
-    if notas_2 != 0:
-        troco.append((2, notas_2))
-    if notas_1 != 0:
-        troco.append((1, notas_1))
 
-    return troco
+    troco_em_notas = []
+    notas = [50, 20, 10, 5, 2, 1]
+
+    for nota in notas:
+        qtde_notas = troco // nota
+        if qtde_notas > 0:
+            troco_em_notas.append((nota, qtde_notas))
+        troco = troco % nota
+
+    return (troco_em_notas)
+
+    # valor = valor_em_dinheiro - valor_a_pagar
+    # troco = []
+    # notas_50 = valor // 50
+    # notas_20 = (valor % 50) // 20
+    # notas_10 = ((valor % 50) % 20) // 10
+    # notas_5 = (((valor % 50) % 20) % 10) // 5
+    # notas_2 = ((((valor % 50) % 20) % 10) % 5) // 2
+    # notas_1 = (((((valor % 50) % 20) % 10) % 5) % 2) // 1
+    #
+    # if valor_em_dinheiro < valor_a_pagar:
+    #     return []
+    # if notas_50 != 0:
+    #     troco.append((50, notas_50))
+    # if notas_20 != 0:
+    #     troco.append((20, notas_20))
+    # if notas_10 != 0:
+    #     troco.append((10, notas_10))
+    # if notas_5 != 0:
+    #     troco.append((5, notas_5))
+    # if notas_2 != 0:
+    #     troco.append((2, notas_2))
+    # if notas_1 != 0:
+    #     troco.append((1, notas_1))
+    #
+    # return troco
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
