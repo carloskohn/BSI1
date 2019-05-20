@@ -23,13 +23,11 @@ def intercalamento_listas(lista1,lista2):
 
     lista_intercalada = []
 
-    while posicao < len(lista1):
-        lista_intercalada.append((posicao[lista1], posicao[lista2]))
-
+    for posicao, item in enumerate(lista1):
+        lista_intercalada.append(item)
+        lista_intercalada.append(lista2[posicao])
 
     return lista_intercalada
-
-
 
 
 def im_pares(lista):
@@ -50,10 +48,53 @@ def im_pares(lista):
 def maior_menor(lista):
     ''' Calcule o maior e o menor numero da 'lista' '''
 
+    maior = lista[0]
+    menor = lista[0]
+
+    for numero in lista[1:]:
+        if numero > maior:
+            maior = numero
+        if numero < menor:
+            menor = numero
+
+    return (maior, menor)
+
+    # return (max(lista),min(lista))
+
+
+
+
 def dar_troco(valor_a_pagar, valor_em_dinheiro):
     ''' Calcule o troco numa lista com notas de 1,2,5,10,20,50 com sua
     quantidade de notas sem considerar centavos
     ex: 1 e 10 retorna troco_notas_quantidade = [5,2] quantidade_notas = [1,2] '''
+
+    valor = valor_em_dinheiro-valor_a_pagar
+    troco = []
+    notas_50 = valor // 50
+    notas_20 = (valor % 50) // 20
+    notas_10 = ((valor % 50) % 20) // 10
+    notas_5 = (((valor % 50) % 20) % 10) // 5
+    notas_2 = ((((valor % 50) % 20) % 10) % 5) // 2
+    notas_1 = (((((valor % 50) % 20) % 10) % 5) % 2) // 1
+
+    if valor_em_dinheiro < valor_a_pagar:
+        return []
+    if notas_50 != 0:
+        troco.append((50, notas_50))
+    if notas_20 != 0:
+        troco.append((20, notas_20))
+    if notas_10 != 0:
+        troco.append((10, notas_10))
+    if notas_5 != 0:
+        troco.append((5, notas_5))
+    if notas_2 != 0:
+        troco.append((2, notas_2))
+    if notas_1 != 0:
+        troco.append((1, notas_1))
+
+    return troco
+
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
 acertos = 0
