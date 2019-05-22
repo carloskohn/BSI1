@@ -58,11 +58,29 @@ def encontra_caracter(texto, caracter_procurado):
     '''Receba um texto e retorne a localização da primeira vez que
     aparece o caracter especificado. Não use métodos nativos, com texto.find(), index, etc.'''
 
-    for localizacao, caracter in enumerate(texto):
-        if caracter_procurado == caracter:
-            return localizacao
-    else:
-        return -1
+    posicao = 0
+    while posicao < len(texto):
+        if texto[posicao] == caracter_procurado:
+            return posicao
+        posicao += 1
+    return -1
+
+
+
+    # posicao = 0
+    # for caracter in texto:
+    #     if caracter == caracter_procurado:
+    #         return posicao
+    #     posicao += 1
+    # else:
+    #     return -1
+
+
+    # for localizacao, caracter in enumerate(texto):
+    #     if caracter_procurado == caracter:
+    #         return localizacao
+    # else:
+    #     return -1
 
 
 def é_sortudo(numero):
@@ -163,12 +181,14 @@ def ponteironuloville(telefones):
     1. Não pode haver dois dígitos consecutivos idênticos, porque isso é chato;
     2. A soma dos dígitos tem que ser par, porque isso é legal;
     3. O último dígito não pode ser igual ao primeiro, porque isso dá azar.
+
     Então, dadas essas regras perfeitamente razoáveis, bem projetadas e
     maduras, quantos números de telefone na lista abaixo são válidos?
     Dica: faça uma função de validação e outra que a chama e verifica os
     valores passados.
     Outra dica: coloque a lista em um arquivo texto
     Mais uma dica: você precisa incluir um teste com esses valores.
+
         213752 216732 221063 221545 225583 229133 230648 233222
         236043 237330 239636 240138 242123 246224 249183 252936
         254711 257200 257607 261424 263814 266794 268649 273050
@@ -194,16 +214,18 @@ def ponteironuloville(telefones):
         513796 535067 550779 570945 586244 600455 612636 629643
         657143 677125 435054 462985 482422 497901 518232 535183
         551595 575447 587393 600953 615233 633673 659902 678315
+
         Resposta: 39
     '''
 
-    quant_numeros = 0
+    quant_numeros_validos = 0
 
     for telefone in telefones:
         if é_número_válido(telefone):
-            quant_numeros += 1
+            quant_numeros_validos += 1
 
-    return quant_numeros
+    return quant_numeros_validos
+
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!

@@ -24,7 +24,7 @@ def intercalamento_listas(lista1,lista2):
     lista_intercalada = []
 
     for posicao, item in enumerate(lista1):
-        lista_intercalada.append(item)
+        lista_intercalada.append(lista1[posicao])
         lista_intercalada.append(lista2[posicao])
 
     return lista_intercalada

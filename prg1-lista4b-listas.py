@@ -6,6 +6,7 @@
 # Exercícios apenas com for (sempre que possível), e sem funções embutidas.
 # Você pode utilizar funções já desenvolvidas em outros exercícios
 
+
 def media_anual(temperaturas):
     '''Receba uma lista com as temperaturas médias de cada mês
     e devolva uma lista com os números correspondentes aos meses que
@@ -16,7 +17,8 @@ def media_anual(temperaturas):
 
     for temperatura in temperaturas:
         total_temp_anual += temperatura
-        media_temp_anual = total_temp_anual / len(temperaturas)
+
+    media_temp_anual = total_temp_anual / len(temperaturas)
 
     for posicao, temp_informada in enumerate(temperaturas):
         if temp_informada > media_temp_anual:
@@ -34,20 +36,34 @@ def maiores_13(idades, alturas):
     maior13_inferiormedia = []
 
     for altura in alturas:
-        altura_total.append(altura)
-        media_alturas = altura_total / len(alturas)
+        altura_total += altura
+    media_alturas = altura_total / len(alturas)
 
-        if altura < media_alturas and idades >= 13:
-            maior13_inferiormedia.append(altura)
+    for posicao, idade in enumerate(idades):
+        if idade > 13 and alturas[posicao] < media_alturas:
+            maior13_inferiormedia.append(alturas[posicao])
 
     return maior13_inferiormedia
-
-
 
 
 def media_saltos_lista(saltos):
     '''Receba uma lista com os saltos de um atleta e calcule a média dos
     seus saltos, sabendo que o melhor e o pior saltos são desconsiderados.'''
+
+    # maior = saltos[0]
+    # menor = saltos[0]
+    #
+    # for salto in saltos:
+    #     if salto > maior:
+    #         maior = salto
+    #     if salto < menor:
+    #         menor = salto
+    #
+    # media = (sum(saltos) - maior - menor) / (len(saltos)-2)
+
+    media = (sum(saltos) - max(saltos) - min(saltos)) / (len(saltos) - 2)
+
+    return media
 
 
 def altera_salarios(salarios):
@@ -60,6 +76,23 @@ def altera_salarios(salarios):
     - acima de 5 SM: aumento de 5%
     Salário mínimo para referência: R$ 724,00
     '''
+
+    sm = 724.0
+    salarios_alterados = []
+
+    for salario in salarios:
+        if salario <= sm:
+            salario = salario * 1.2
+        elif salario <= sm * 2:
+            salario = salario * 1.15
+        elif salario <= sm * 5:
+            salario = salario * 1.1
+        else:
+            salario = salario * 1.05
+
+        salarios_alterados.append(round(salario,2))
+
+    return salarios_alterados
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
@@ -113,4 +146,3 @@ if __name__ == '__main__':
                                                         total - acertos, float(acertos * 10) / total))
     if total == acertos:
         print("Parabéns, seu programa rodou sem falhas!")
-

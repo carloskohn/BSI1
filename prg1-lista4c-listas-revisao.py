@@ -92,4 +92,3 @@ if __name__ == '__main__':
                                                         total - acertos, float(acertos * 10) / total))
     if total == acertos:
         print("Parabéns, seu programa rodou sem falhas!")
-
