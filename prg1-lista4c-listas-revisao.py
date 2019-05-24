@@ -8,6 +8,13 @@
 def contem(lista, item_procurado):
     '''Verifica se uma lista contém um item e devolve um valor booleano.
     Não utilize find, index, in ou outras funções prontas da linguagem.'''
+
+    for item in lista:
+        if item_procurado == item:
+            return True
+
+    return False
+
     # return item_procurado in lista
 
 
@@ -15,20 +22,54 @@ def conta(lista, item_procurado):
     '''Informa quantas ocorrências de um item existem numa lista.
     Não utilize find, index, in, count ou outras funções prontas da linguagem.'''
 
+    quant_item = 0
+
+    for item in lista:
+        if item == item_procurado:
+            quant_item += 1
+
+    return quant_item
+
 
 def posicoes(lista, item_procurado):
     '''Devolve uma lista com as posições em que aparece um item solicitado.
     Não utilize find, index, in, count ou outras funções prontas da linguagem.'''
+
+    lista_posicoes = []
+
+    for posicao, item in enumerate(lista):
+        if item == item_procurado:
+            lista_posicoes.append(posicao)
+
+    return lista_posicoes
 
 
 def troca_ocorrencias(lista, item_procurado, item_novo):
     '''Devolve uma nova lista com o item procurado trocado pelo item_novo.
     Não utilize find, index, in, count, replace ou outras funções prontas da linguagem.'''
 
+    nova_lista = []
+
+    for item in lista:
+        if item == item_procurado:
+            nova_lista.append(item_novo)
+        else:
+            nova_lista.append(item)
+
+    return nova_lista
+
 
 def remove_ocorrencias(lista, item_procurado):
     '''Devolve uma nova lista sem as ocorrencias do item procurado.
     Não utilize find, index, in, count, replace, remove, del ou outras funções prontas da linguagem.'''
+
+    nova_lista = []
+
+    for item in lista:
+        if item != item_procurado:
+            nova_lista.append(item)
+
+    return nova_lista
 
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
