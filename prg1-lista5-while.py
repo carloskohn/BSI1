@@ -24,30 +24,108 @@ def soma_dos_inteiros(valor1,valor2):
     números negativos ou fora de ordem. 
     Ex: 1 e 5 ou 5 e 1, retorna 9'''
 
+    soma = 0
+
+    if valor1 < valor2:
+        while valor1 < valor2 - 1:
+            soma += int(valor1 + 1)
+            valor1 += 1
+    else:
+        while valor1 > valor2 + 1:
+            soma += int(valor1 - 1)
+            valor1 -= 1
+
+    return soma
+
+
 def potencia(base,expoente):
     ''' Calcule a 'base' elevada ao 'expoente' manualmente sem usar 
-    'base**expoente'. Considere base e expoente como inteiros positivos.''' 
+    'base**expoente'. Considere base e expoente como inteiros positivos.'''
 
-def crescimento_populacional(populacao1,populacao2,crescimento1,
-crescimento2):
+    contador_vezes = 1
+    valor = 1
+
+    while contador_vezes <= expoente:
+        valor *= base
+        contador_vezes += 1
+
+    return valor
+
+
+def crescimento_populacional(populacao1,populacao2,crescimento1, crescimento2):
     ''' Calcule quantos anos levará para a 'população1' ultrapassar a 
     'população2', baseado em suas porcentagens de crescimento.'''
+
+    contador_anos = 0
+
+    if crescimento1 < crescimento2 or populacao1 > populacao2:
+        return 0
+    else:
+        while populacao1 < populacao2:
+            contador_anos += 1
+            populacao1 += populacao1 * (crescimento1 / 100)
+            populacao2 += populacao2 * (crescimento2 / 100)
+
+    return contador_anos
+
 
 def Fibonacci(n):
     ''' Retorne o n-ésimo valor da série de Fibonacci
     Fibonacci = 1,1,2,3,5,8,13,...'''
+
+    contador = 1
+    valor_anterior = 0
+    valor_atual = 1
+    variavel_temp = 0
+
+    while contador < n:
+        valor_atual = variavel_temp + valor_atual
+        variavel_temp = valor_atual
+        valor_anterior = valor_atual
+        contador += 1
+
+    return valor_anterior
+
+
+
+
 
 def fatorial(numero):
     ''' Calcule e retorne o fatorial do 'numero' informado,
     O fatorial é o valor produtório dos valores menores ou iguais ao número
     ex: fatorial de 4 é 4*3*2*1 e retorna 24'''
 
+    contador = 1
+    fat = 1
+
+    while contador <= numero:
+        fat *= contador
+        contador += 1
+
+    return fat
+
+
 def é_primo(valor):
     ''' Verifique se o 'valor' informado é primo.
     Um número primo é aquele que é divisível apenas por ele mesmo e por 1'''
 
+    numero = 1
+    contador = 0
+
+    while numero <= valor:
+        if valor % numero == 0:
+            contador += 1
+        numero += 1
+
+    return  contador == 2
+
+
 def quantidade_de_primos(comeco,final):
     ''' Retorne a quantidade de primos entre os valores informados'''
+
+
+
+
 
 def lista_de_primos(inicio,fim):
     '''Retorne uma lista de primos entre os valores informados, incluindo
@@ -68,51 +146,53 @@ def serie_pi(n):
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
 acertos = 0
-total = 0 
+total = 0
+
 
 def test(obtido, esperado):
     global acertos, total
     total += 1
     if obtido != esperado:
-        prefixo = ' Falhou.'
+        prefixo = '\033[31mFalhou'
     else:
-        prefixo = ' Passou.'
+        prefixo = '\033[32mPassou'
         acertos += 1
-    print ('%s Esperado: %s \tObtido: %s' % (prefixo,repr(esperado), 
-        repr(obtido)))
+    print('{} Esperado: {} \tObtido: {}\033[1;m'.format(
+        prefixo, esperado, obtido))
+
 
 def main():
     print('Quantidade de ímpares:')
-    test(quantidade_de_impares(1,3), 0)
-    test(quantidade_de_impares(1,4), 1)
-    test(quantidade_de_impares(1,5), 1)
-    test(quantidade_de_impares(1,10), 4)
-    test(quantidade_de_impares(1,50), 24)
-    test(quantidade_de_impares(1,60), 29)
-    test(quantidade_de_impares(40,80), 20)
+    test(quantidade_de_impares(1, 3), 0)
+    test(quantidade_de_impares(1, 4), 1)
+    test(quantidade_de_impares(1, 5), 1)
+    test(quantidade_de_impares(1, 10), 4)
+    test(quantidade_de_impares(1, 50), 24)
+    test(quantidade_de_impares(1, 60), 29)
+    test(quantidade_de_impares(40, 80), 20)
 
     print('Soma de números inteiros:')
-    test(soma_dos_inteiros(1,50), 1224)
-    test(soma_dos_inteiros(50,1), 1224)
-    test(soma_dos_inteiros(10,1), 44)
-    test(soma_dos_inteiros(-10,1), -45)
-    test(soma_dos_inteiros(10,-10), 0)
+    test(soma_dos_inteiros(1, 50), 1224)
+    test(soma_dos_inteiros(50, 1), 1224)
+    test(soma_dos_inteiros(10, 1), 44)
+    test(soma_dos_inteiros(-10, 1), -45)
+    test(soma_dos_inteiros(10, -10), 0)
 
     print('Potência:')
-    test(potencia(2,1), 2)
-    test(potencia(2,2), 4)
-    test(potencia(1,20000), 1)
-    test(potencia(2,4), 16)
-    test(potencia(10000,1), 10000)
-    test(potencia(2,10), 1024)
-    test(potencia(2,0), 1)
-    test(potencia(10,0), 1)
+    test(potencia(2, 1), 2)
+    test(potencia(2, 2), 4)
+    test(potencia(1, 20000), 1)
+    test(potencia(2, 4), 16)
+    test(potencia(10000, 1), 10000)
+    test(potencia(2, 10), 1024)
+    test(potencia(2, 0), 1)
+    test(potencia(10, 0), 1)
 
     print('Aumento da população:')
-    test(crescimento_populacional(80000,200000,3,1.5), 63)
-    test(crescimento_populacional(1000,2000,1,1.1), 0)
-    test(crescimento_populacional(2000,1000,1.1,1), 0)
-    test(crescimento_populacional(2000,2020,1.1,1), 11)
+    test(crescimento_populacional(80000, 200000, 3, 1.5), 63)
+    test(crescimento_populacional(1000, 2000, 1, 1.1), 0)
+    test(crescimento_populacional(2000, 1000, 1.1, 1), 0)
+    test(crescimento_populacional(2000, 2020, 1.1, 1), 11)
 
     print('Fibonnaci:')
     test(Fibonacci(1), 1)
@@ -138,19 +218,20 @@ def main():
     test(é_primo(11), True)
     test(é_primo(121), False)
     test(é_primo(169), False)
-    
+
     print('Quantidade de primos no intervalo:')
-    test(quantidade_de_primos(5,10), 1)
-    test(quantidade_de_primos(10,20), 4)
-    test(quantidade_de_primos(0,21), 8)
-    test(quantidade_de_primos(43,102), 12)
+    test(quantidade_de_primos(5, 10), 1)
+    test(quantidade_de_primos(10, 20), 4)
+    test(quantidade_de_primos(0, 21), 8)
+    test(quantidade_de_primos(43, 102), 12)
 
     print('Lista de primos:')
-    test(lista_de_primos(0,1), [])
-    test(lista_de_primos(5,10), [5,7])
-    test(lista_de_primos(10,20), [11,13,17,19])
-    test(lista_de_primos(0,21), [2,3,5,7,11,13,17,19])
-    test(lista_de_primos(43,102), [43,47,53,59,61,67,71,73,79,83,89,97,101])
+    test(lista_de_primos(0, 1), [])
+    test(lista_de_primos(5, 10), [5, 7])
+    test(lista_de_primos(10, 20), [11, 13, 17, 19])
+    test(lista_de_primos(0, 21), [2, 3, 5, 7, 11, 13, 17, 19])
+    test(lista_de_primos(43, 102), [43, 47, 53,
+                                    59, 61, 67, 71, 73, 79, 83, 89, 97, 101])
 
     print('Série 1:')
     test(serie1(1), 1.00)
@@ -181,9 +262,10 @@ def main():
     test(serie_pi(5000), 3.141393)
     test(serie_pi(9000), 3.141482)
 
+
 if __name__ == '__main__':
     main()
-    print("\n%d Testes, %d Ok, %d Falhas: Nota %.1f" %(total, acertos,
-     total-acertos, float(acertos*10)/total))
+    print("\n%d Testes, %d Ok, %d Falhas: Nota %.1f" % (total, acertos,
+                                                        total-acertos, float(acertos*10)/total))
     if total == acertos:
         print("Parabéns, seu programa rodou sem falhas!")
