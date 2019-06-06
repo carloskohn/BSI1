@@ -74,20 +74,18 @@ def Fibonacci(n):
     Fibonacci = 1,1,2,3,5,8,13,...'''
 
     contador = 1
-    valor_anterior = 0
-    valor_atual = 1
-    variavel_temp = 0
+    numero_atual = 1
+    proximo_numero = 0
+    numero_anterior = 0
 
     while contador < n:
-        valor_atual = variavel_temp + valor_atual
-        variavel_temp = valor_atual
-        valor_anterior = valor_atual
+        proximo_numero = numero_atual + numero_anterior
+        numero_anterior = numero_atual
+        numero_atual = proximo_numero
+
         contador += 1
 
-    return valor_anterior
-
-
-
+    return numero_atual
 
 
 def fatorial(numero):
