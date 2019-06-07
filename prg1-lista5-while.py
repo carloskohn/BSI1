@@ -107,40 +107,101 @@ def é_primo(valor):
     ''' Verifique se o 'valor' informado é primo.
     Um número primo é aquele que é divisível apenas por ele mesmo e por 1'''
 
-    numero = 1
-    contador = 0
+    numero = 2
 
-    while numero <= valor:
-        if valor % numero == 0:
-            contador += 1
-        numero += 1
+    if valor < 2:
+        return False
+    else:
+        while numero < valor:
+            if valor % numero == 0:
+                return False
+            numero += 1
 
-    return  contador == 2
+        return True
 
 
 def quantidade_de_primos(comeco,final):
     ''' Retorne a quantidade de primos entre os valores informados'''
 
+    contador = 0
+    comeco +=1
+    qt_primo = 0
 
+    while comeco < final:
+        if é_primo(comeco):
+            qt_primo += 1
+        comeco += 1
 
+    return qt_primo
 
 
 def lista_de_primos(inicio,fim):
     '''Retorne uma lista de primos entre os valores informados, incluindo
     os limites'''
 
+    contador = 0
+    lista_primos = []
+
+    while inicio <= fim:
+        if é_primo(inicio):
+            lista_primos.append(inicio)
+        inicio += 1
+
+    return lista_primos
+
+
 def serie1(n):
     '''Dado n, calcule o valor de
     s = 1 + 1/2 + 1/3 + 1/4 + ... + 1/n '''
-    
+
+    contador = 1
+    soma = 0
+
+    while contador <= n:
+        soma += 1 / contador
+        contador += 1
+
+
+    return round(soma, 2)
+
+
 def serie2(n):
     '''Dado n, calcule o valor de
     s = 1/1 + 2/3 + 3/5 + 4/7 + 5/9 + ... + n/m'''
+
+    contador = 1
+    m = 1
+    soma = 0
+
+    while contador <= n:
+        soma += contador / m
+        contador += 1
+        m += 2
+
+    return round(soma, 2)
+
 
 def serie_pi(n):
     ''' Calcule o valor de pi através da série
     4/1 - 4/3 + 4/5 - 4/7 + ... - 4/m, sendo informado
     o número n de iterações '''
+
+    contador = 1
+    m = 1
+    soma = 0
+
+    while contador <= n:
+        if contador % 2 != 0:
+            soma += 4 / m
+            contador += 1
+            m += 2
+        else:
+            soma -= 4 / m
+            contador += 1
+            m += 2
+
+    return round(soma, 6)
+
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
 acertos = 0
