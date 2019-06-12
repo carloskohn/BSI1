@@ -10,6 +10,13 @@ def dormir(dia_semana, feriado):
     você pode ficar dormindo quando é feriado ou não é dia semana
     retorne True ou False conforme você vá dormir ou não
     """
+    # if feriado or not dia_semana:
+    #     return True
+    # else:
+    #     return False
+
+    return feriado or not dia_semana
+
 
 def alunos_problema(a_sorri, b_sorri):
     """
@@ -18,6 +25,7 @@ def alunos_problema(a_sorri, b_sorri):
     temos problemas quando ambos estão sorrindo ou ambos não estão sorrindo
     retorne True quando houver problemas
     """
+    return a_sorri == b_sorri
 
 def soma_dobro(a, b):
     """
@@ -26,6 +34,13 @@ def soma_dobro(a, b):
     soma_dobro(1, 2) -> 3
     soma_dobro(2, 2) -> 8
     """
+    if a == b:
+        soma = (a + b) * 2
+    else:
+        soma = a + b
+
+    return soma
+
 
 def diff21(n):
     """
@@ -35,6 +50,13 @@ def diff21(n):
     diff21(25) -> 8
     dica: abs(x) retorna o valor absoluto de x
     """
+    if n <= 21:
+        soma = 21 - n
+    else:
+        soma = (n - 21) * 2
+
+    return soma
+
 
 def papagaio(falando, hora):
     """
@@ -42,6 +64,16 @@ def papagaio(falando, hora):
     hora é um parâmetro entre 0 e 23
     temos problemas se o papagaio estiver falando antes da 7 ou depois das 20
     """
+
+    return falando and ((hora < 7) or (hora > 20))
+
+    # if not falando:
+    #     return False
+    # elif hora < 7 or hora > 20:
+    #     return True
+    # else:
+    #     return False
+
 
 def dez(a, b):
     """
