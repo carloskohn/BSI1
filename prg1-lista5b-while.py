@@ -5,6 +5,21 @@
 # Lista de exercícios 2 - while
 
 
+def fatorial(numero):
+    ''' Calcule e retorne o fatorial do 'numero' informado,
+    O fatorial é o valor produtório dos valores menores ou iguais ao número
+    ex: fatorial de 4 é 4*3*2*1 e retorna 24'''
+
+    contador = 1
+    fat = 1
+
+    while contador <= numero:
+        fat *= contador
+        contador += 1
+
+    return fat
+
+
 def corrida(vantagem, vlc_tartaruga, vlc_lebre):
     """A tartaruga e a lebre vão apostar uma corrida. A lebre concede à
         tartaruga o direito de sair a uma vantagem em metros a sua frente.
@@ -27,6 +42,7 @@ def corrida(vantagem, vlc_tartaruga, vlc_lebre):
             segundos += 1
 
     return segundos
+
 
 
 def sub_sucessivas(dividendo, divisor):
@@ -79,8 +95,20 @@ def serie_infinita(x, i):
     maior a precisão do valor encontrado.
     Na expressão, cada uma das partes formadas por (x^y/y!) é denominada termo."""
 
+    soma = 1 + x
+    contador = 1
+    y = 2
 
+    if i == 0:
+        return x
+    else:
+        while contador < i:
+            termo = x ** y / fatorial(y)
+            contador += 1
+            y += 1
+            soma += termo
 
+    return soma
 
 
 def populacao_dodo(populacao):
@@ -90,8 +118,7 @@ def populacao_dodo(populacao):
     cada ano, 6% dos animais vivos do começo do ano morreram. O número de animais
     nascidos ao longo do ano foi de 1% da população anual.
     Escreva um programa que retorne o ano em que a população de dodôs cai para
-    menos de 10% da população inicial.
-    """
+    menos de 10% da população inicial."""
 
     ano = 1600
     nascimentos = 0
@@ -112,6 +139,18 @@ def matriz(n):
     atribuição é A[i][j] = i+j. A partir da matriz criada, retorne a
     soma da diagonal principal."""
 
+    soma = 0
+    contador = 1
+    i = 0
+    j = 0
+
+    while contador <= n:
+        i += 1
+        j += 1
+        contador +=1
+        soma += i + j
+    return soma
+
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
 acertos = 0
@@ -131,6 +170,14 @@ def test(obtido, esperado):
 
 
 def main():
+
+    print('Fatorial:')
+    test(fatorial(0), 1)
+    test(fatorial(1), 1)
+    test(fatorial(5), 120)
+    test(fatorial(10), 3628800)
+
+
     print('Corrida:')
     test(corrida(100, 2, 5), 34)
     test(corrida(200, 7, 6), -1)
