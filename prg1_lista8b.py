@@ -10,6 +10,9 @@ def multi_string(s, n):
     multi_string('Oi', 2) -> 'OiOi'
     '''
 
+    return s * n
+
+
 def explode_string(s):
     '''
     explode_string('Code') -> 'CCoCodCode'
@@ -17,8 +20,19 @@ def explode_string(s):
     explode_string('ab') -> 'aab'
     '''
 
+
+
 def conta_noves(nums):
     ''' Conta quantas vezes aparece o 9 numa lista nums.'''
+
+    contador = 0
+
+    for num in nums:
+        if num == 9:
+            contador += 1
+
+    return contador
+
 
 def nove_na_frente(nums):
     '''
@@ -28,6 +42,9 @@ def nove_na_frente(nums):
     nove_na_frente([1, 2, 3, 4, 5]) -> False
     '''
 
+    return 9 in nums[0:3]
+
+
 def alo_nome(nome):
     '''
     Seja uma string nome
@@ -35,6 +52,8 @@ def alo_nome(nome):
     alo_nome('Alice') -> 'Alô Alice!'
     alo_nome('X') -> 'Alô X!'
     '''
+
+    return 'Alô ' + nome + '!'
 
 def cria_tags(tag, palavra):
     '''

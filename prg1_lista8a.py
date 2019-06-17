@@ -81,6 +81,9 @@ def dez(a, b):
     retorna True se um dos dois é 10 ou a soma é 10
     """
 
+    return a % 10 == 0 or b % 10 == 0 or (a + b) % 10 == 0
+
+
 def dista10(n):
     """
     seja um inteiro n
@@ -90,6 +93,8 @@ def dista10(n):
     dista10(90) -> True
     dista10(89) -> False
     """
+    return abs(100 - n) <= 10 or abs(200 - n) <= 10
+
 
 def apaga(s, n):
     """
@@ -98,6 +103,17 @@ def apaga(s, n):
     apaga('kitten', 1) -> 'ktten'
     apaga('kitten', 4) -> 'kittn'
     """
+
+    nova_string = s[:n] + s[n + 1:]
+
+    # nova_string = ''
+
+    # for posicao, letra in enumerate(s):
+    #     if posicao != n:
+    #         nova_string += letra
+
+    return nova_string
+
 
 def troca(s):
     """
@@ -108,6 +124,14 @@ def troca(s):
     troca('a') -> 'a'
     troca('ab') -> 'ba'
     """
+
+    if len(s) <= 1:
+        return s
+    else:
+        primeiro_caracter = s[0]
+        ultimo_caracter = s[-1]
+        return ultimo_caracter + s[1:-1] + primeiro_caracter
+
 
 # Área de testes: só mexa aqui se souber o que está fazendo!
 acertos = 0
