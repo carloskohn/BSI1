@@ -55,12 +55,21 @@ def alo_nome(nome):
 
     return 'Alô ' + nome + '!'
 
+
 def cria_tags(tag, palavra):
     '''
     cria_tags('i', 'Uhul'), '<i>Uhul</i>'
     cria_tags('i', 'Alô'), '<i>Alô</i>'
     cria_tags('cite', 'Uhul'), '<cite>Uhul</cite>'
     '''
+
+
+    return "<%s>%s</%s>"%(tag, palavra, tag)
+
+    # return '<{}>{}</{}>'.format(tag,palavra,tag)
+
+    # return "<"+tag+">"+palavra+"</"+tag+">"
+
  
 def final_extra(s):
     '''
@@ -70,6 +79,9 @@ def final_extra(s):
     final_extra('ab'), 'ababab'
     final_extra('Oi'), 'OiOiOi' 
     '''
+
+
+
 
 def primeira_metade(s):
     '''
