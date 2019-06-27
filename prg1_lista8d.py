@@ -6,11 +6,17 @@
 def numero_invertido(numero):
     '''Receba um inteiro positivo e o mostre invertido. Ex.: 1234 gera 4321'''
 
+    return int(str(numero)[::-1])
+
+
 def gago(texto):
     '''Receba um texto e devolva-o repetindo a primeira letra de cada palavra, junto com um traço
     gago("preciso tirar dez") -> "p-preciso t-tirar d-dez"
     gago("eu deveria ter estudado mais") -> "e-eu d-deveria t-ter e-estudado m-mais"
     '''
+
+    texto = texto.split( )
+    print(texto)
 
 def saudacao(nome, hora):
     '''Escreva uma saudação para a pessoa, dependendo do horário do dia:
