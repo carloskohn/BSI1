@@ -56,6 +56,11 @@ def rosquinhas(n):
     rosquinhas(23) -> 'muitas rosquinhas'
     '''
 
+    if n >= 10:
+        return 'muitas rosquinhas'
+    else:
+        return '%d rosquinhas' % (n)
+
 
 def pontas(s):
     '''
@@ -64,6 +69,11 @@ def pontas(s):
     Assim 'palmeiras' retorna 'paas'
     No entanto, se a string tiver menos que 2 letras, retorna uma string vazia
     '''
+
+    if len(s) <=2:
+        return ''
+    else:
+        return s[:2] + s[-2:]
 
 
 def fixa_primeiro(s):
@@ -74,6 +84,24 @@ def fixa_primeiro(s):
     Dica: use s.replace(stra, strb)
     '''
 
+    contador = 0
+    primeira_ocorrencia = s[0]
+    nova_string = ''
+
+    for letra in s:
+        if contador == 0:
+            nova_string += letra
+            contador += 1
+        else:
+            if letra == primeira_ocorrencia:
+                letra = '*'
+                nova_string += letra
+                contador += 1
+            else:
+                nova_string += letra
+                contador += 1
+
+    return nova_string
 
 def nomes_pontas(n):
     '''Dada uma string n contendo o nome completo de uma pessoa,
@@ -82,6 +110,9 @@ def nomes_pontas(n):
     "Marco André Lopes Mendes" -> "MARCO MENDES"
     '''
 
+    lista_nome = n.split()
+    return lista_nome[0].upper() + ' ' + lista_nome[-1].upper()
+
 
 def nomes_pontas_e_iniciais_do_meio(n):
     '''Dada uma string n contendo o nome completo de uma pessoa,
@@ -89,6 +120,10 @@ def nomes_pontas_e_iniciais_do_meio(n):
     e as inciais dos nomes do meio, em maiúsculas.
     "Marco André Lopes Mendes" -> "MARCO A L MENDES"
     '''
+
+    lista_nome = n.split()
+
+
 
 
 def mistura2(a, b):
@@ -100,6 +135,8 @@ def mistura2(a, b):
       'dog', 'dinner' -> 'dig donner'
     '''
 
+    return '%s %s' % (b[0:2] + a[2:], a[0:2] + b[2:])
+
 
 def busca(frase, palavra):
     '''
@@ -108,6 +145,22 @@ def busca(frase, palavra):
     palavra = 'ana'
     busca ('ana e mariana gostam de banana', 'ana') == 4
     '''
+
+    # frase_sem_espaço = ''
+    # ocorrencias = 0
+    # pos_primeira_letra = 0
+    # pos_segunda_letra = 2
+    #
+    # for palavra in frase:
+    #     frase_sem_espaço += palavra.strip()
+    #
+    # for letra in frase_sem_espaço[pos_primeira_letra:pos_segunda_letra]:
+    #     if palavra == frase_sem_espaço[pos_primeira_letra:pos_segunda_letra]:
+    #         ocorrencias += 1
+    #     pos_primeira_letra += 1
+    #     pos_segunda_letra += 1
+    #
+    # return ocorrencias
 
 
 def tres_maiusculas(texto):
